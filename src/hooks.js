@@ -7,9 +7,10 @@ export async function handle({ request, resolve }) {
   request.locals.user = cookies.user
 
   const response = await resolve(request)
-
+  var date = new Date();
+  date.setTime(date.getTime() + (60 * 1000));
   // do some stuff after
-  response.headers['set-cookie'] = `user=${request.locals.user || ''}; path=/; HttpOnly`
+  response.headers['set-cookie'] = `user=${request.locals.user || ''}; expires=${date}; path=/; HttpOnly`
 
   return response
 }
