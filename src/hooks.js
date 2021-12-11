@@ -10,7 +10,7 @@ export async function handle({ request, resolve }) {
   var date = new Date();
   date.setTime(date.getTime() + (60 * 1000));
   // do some stuff after
-  response.headers['set-cookie'] = `user=${request.locals.user || ''}; expires=${date}; path=/; HttpOnly`
+  response.headers['set-cookie'] = `user=${request.locals.user || ''}; path=/; HttpOnly`
 
   return response
 }

@@ -10,6 +10,7 @@ export async function get(request) {
 
   // get accessToken
   const token = await getToken(code)
+  console.log(token);
   // get user
   const user = await getUser(token)
 
@@ -26,7 +27,8 @@ function getUser(token) {
   return fetch(userURL, {
     headers: {
       Accept: 'application/json',
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
+
     }
   })
     .then(r => r.json())
